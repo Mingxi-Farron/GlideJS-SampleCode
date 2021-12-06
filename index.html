@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+
+    <!----local access scss-->
+    <!----put these two files in your local folder-->
+    <!----and import them as normal css-->
+    <link rel="stylesheet" href="glide.core.min.css">
+    <link rel="stylesheet" href="glide.theme.min.css">
+
+  </head>
+  <body>
+
+    <!-----put glide js html before all the js files-->
+    <div class="container">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide"><img src="1.jpg"></li>
+                <li class="glide__slide"><img src="2.jpeg"></li>
+                <li class="glide__slide"><img src="3.jpg"></li>
+                <li class="glide__slide"><img src="4.jpg"></li>
+                <li class="glide__slide"><img src="5.jpeg"></li>
+              </ul>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+              </div>
+          </div>
+          
+    </div>
+
+    <!----other js files-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- contentful apis-->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script>
+      var exports = {}; // quick fix because 'exports' is not defined in rich-text bundle below
+    </script>
+    <script src="https://unpkg.com/@contentful/rich-text-html-renderer@12.0.0/dist/rich-text-html-renderer.es5.js"></script>
+     <!-- mustache api-->
+    <script src="https://unpkg.com/mustache@latest"></script>
+
+
+    <!----glide js module-->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+
+    <!----activate glide js module-->
+    <script>
+        //breakpoints is for responsive design
+        // when the window width is 800 pixels, only 2 shows up
+        // when the window width is 480 pixels, only 1 shows up
+
+        const config = {
+            type: 'carousel',
+            perView: 3,
+            focusAt: 'center',
+            breakpoints: {
+                800: {
+                perView: 2
+                },
+                480: {
+                perView: 1
+                }
+            }
+        }
+        new Glide('.glide', config).mount()
+      </script>
+
+    <!----your script.js import-->
+    <script src="script.js"></script>
+    <!----activate your script.js code-->
+    <script>
+      (function(){
+        app.initialize();
+      })();
+    </script>
+  </body>
+</html>
